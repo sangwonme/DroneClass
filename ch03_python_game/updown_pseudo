@@ -1,0 +1,17 @@
+print(제목 및 설명)
+answer = 1~99 사이 무작위 수 생성
+life = 5
+
+계속 반복:
+    print(남은 생명)
+    guess = 사용자가 예측한 수
+    if guess < answer:
+        up
+    if guess > answer:
+        down
+    if guess == answer:
+        정답 & 게임 종료
+    생명 감소
+    if life == 0:
+        게임 오버
+    
