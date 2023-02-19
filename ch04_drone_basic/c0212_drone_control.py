@@ -40,8 +40,8 @@ while True:
         tello.move_up(30)
     elif key == ord('f'):
         tello.move_down(30)
-    time.sleep(3)
 
 tello.land()
+
 
 
