@@ -21,6 +21,8 @@ while True:
     img = frame_read.frame
     cv2.imshow("drone", img)
 
+    isMove = True
+
     key = cv2.waitKey(1) & 0xff
     if key == 27: # ESC
         break
@@ -40,8 +42,11 @@ while True:
         tello.move_up(30)
     elif key == ord('f'):
         tello.move_down(30)
+    else:
+        isMove = False
     
-    print(tello.get_current_state())
+    if(isMove):
+        print(tello.get_current_state())
 
 tello.land()
 
