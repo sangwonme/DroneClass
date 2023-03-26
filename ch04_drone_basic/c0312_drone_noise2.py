@@ -50,12 +50,12 @@ while True:
     else:
         isMove = False
     
-    if(isMove):
-        print(tello.get_current_state()['tof'])
-        y.append(tello.get_current_state()['tof'])
+    print(tello.get_current_state()['tof'])
+    y.append(tello.get_current_state()['tof'])
 
 tello.land()
 
 y = np.array(y)
 plt.plot(y)
+plt.savefig('noise_2.png', dpi=100)
 plt.show()

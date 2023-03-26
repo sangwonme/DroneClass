@@ -50,12 +50,26 @@ while True:
     else:
         isMove = False
     
-    if(isMove):
-        print(tello.get_current_state()['tof'])
-        y.append(tello.get_current_state()['tof'])
+    print(tello.get_current_state()['baro'])
+    y.append(tello.get_current_state()['baro'])
 
 tello.land()
 
 y = np.array(y)
-plt.plot(y)
+
+# Create the figure and axis objects
+fig, ax = plt.subplots(1, 2)
+
+# Plot the data as a line
+ax[0,0].plot(y)
+
+# Create a histogram of the data
+ax[0,1].hist(y)
+
+# Set the labels and title
+ax[0,0].set_title('Noise Line Plot')
+ax[0,1].set_title('Noise Histogram')
+
+# Show the figure
 plt.show()
+plt.savefig('baro_noise.png', dpi=100)
