@@ -61,14 +61,14 @@ y = np.array(y)
 fig, ax = plt.subplots(1, 2)
 
 # Plot the data as a line
-ax[0,0].plot(y)
+ax[0].plot(y)
 
 # Create a histogram of the data
-ax[0,1].hist(y)
+ax[1].hist(y)
 
 # Set the labels and title
-ax[0,0].set_title('Noise Line Plot')
-ax[0,1].set_title('Noise Histogram')
+ax[0].set_title('Noise Line Plot')
+ax[1].set_title('Noise Histogram')
 
 # Show the figure
 plt.show()
