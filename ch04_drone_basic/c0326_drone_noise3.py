@@ -71,5 +71,5 @@ ax[0].set_title('Noise Line Plot')
 ax[1].set_title('Noise Histogram')
 
 # Show the figure
+fig.savefig('baro_noise.png', dpi=100)
 plt.show()
-plt.savefig('baro_noise.png', dpi=100)
