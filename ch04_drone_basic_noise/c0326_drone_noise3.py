@@ -58,13 +58,13 @@ tello.land()
 y = np.array(y)
 
 # Create the figure and axis objects
-fig, ax = plt.subplots(1, 2, figsize=(14, 6))
+fig, ax = plt.subplots(1, 2)
 
 # Plot the data as a line
 ax[0].plot(y)
 
 # Create a histogram of the data
-ax[1].hist(y, bin=100)
+ax[1].hist(y)
 
 # Set the labels and title
 ax[0].set_title('Noise Line Plot')

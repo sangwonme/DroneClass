@@ -1,9 +1,9 @@
 from djitellopy import Tello
 import cv2, math, time
-
 import matplotlib.pyplot as plt
 import numpy as np
 
+# 
 y = np.random.randn(1000)
 
 # Create the figure and axis objects
