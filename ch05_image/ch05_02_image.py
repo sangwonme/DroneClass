@@ -5,7 +5,7 @@ import os
 
 # 이미지 불러오기
 dir_path = os.path.dirname(os.path.realpath(__file__))  # 현재 파일 위치
-file_path = os.path.join(dir_path, 'img_tt.jpeg')       # 이미지 파일 위치
+file_path = os.path.join(dir_path, 'lena.jpeg')       # 이미지 파일 위치
 img = Image.open(file_path)                             # 이미지 파일 불러오기
 
 # 이미지 numpy array로 저장하기
@@ -17,3 +17,5 @@ print(img_array.shape)
 # 이미지 show
 plt.imshow(img_array)
 plt.show()
+
+print(img_array)
