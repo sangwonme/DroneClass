@@ -30,8 +30,6 @@ for i in range(height):
 # sampled array to np array
 sampled_array = np.array(sampled_array)
 
-
-
 # .shape을 하면 이미지의 사이즈를 확인할 수 있음
 print(sampled_array.shape)
 
