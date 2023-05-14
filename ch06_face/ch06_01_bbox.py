@@ -1,8 +1,10 @@
 import cv2
 
 # Load the cascade
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-print(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+try:
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+except:
+    face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
 
 # To use a video file instead of a camera, pass the video file path instead of the camera index
 cap = cv2.VideoCapture(0)
@@ -30,7 +32,9 @@ while True:
         # Draw the red dot
         cv2.circle(img, (center_x, center_y), radius=10, color=(0, 0, 255), thickness=-1)
 
-
+        # Put the text
+        font = cv2.FONT_HERSHEY_SIMPLEX 
+        cv2.putText(img, '({}, {})'.format(center_x, center_y), (x, y-10), font, 2, (0, 255, 0), 2)
 
     # Display
     # img = cv2.flip(img, 1)
