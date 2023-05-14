@@ -22,9 +22,6 @@ while True:
     # Detect the faces
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
-    # load font
-    font = cv2.FONT_HERSHEY_SIMPLEX 
-
     # Draw the rectangle around each face
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
@@ -37,10 +34,13 @@ while True:
         cv2.circle(img, (center_x, center_y), radius=10, color=(0, 0, 255), thickness=-1)
 
         # Put the text (coordinate)
+        # load font
+        font = cv2.FONT_HERSHEY_SIMPLEX 
         cv2.putText(img, '({}, {})'.format(center_x, center_y), (x, y-10), font, 2, (0, 255, 0), 2)
 
-    # Put the text (people num)
-    cv2.putText(img, TODO , (0, 0), font, 2, (0, 255, 0), 2)
+    # TODO : 사람 명수를 출력하시오
+    print(TODO)
+
 
     # Display
     cv2.imshow('img', img)
