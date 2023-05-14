@@ -13,6 +13,7 @@ while True:
     # Read the frame
     _, img = cap.read()
 
+    # flip
     img = cv2.flip(img, 1)
 
     # Convert to grayscale
@@ -20,6 +21,9 @@ while True:
 
     # Detect the faces
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+
+    # load font
+    font = cv2.FONT_HERSHEY_SIMPLEX 
 
     # Draw the rectangle around each face
     for (x, y, w, h) in faces:
@@ -32,12 +36,13 @@ while True:
         # Draw the red dot
         cv2.circle(img, (center_x, center_y), radius=10, color=(0, 0, 255), thickness=-1)
 
-        # Put the text
-        font = cv2.FONT_HERSHEY_SIMPLEX 
+        # Put the text (coordinate)
         cv2.putText(img, '({}, {})'.format(center_x, center_y), (x, y-10), font, 2, (0, 255, 0), 2)
 
+    # Put the text (people num)
+    cv2.putText(img, TODO , (0, 0), font, 2, (0, 255, 0), 2)
+
     # Display
-    # img = cv2.flip(img, 1)
     cv2.imshow('img', img)
 
     # Stop if escape key is pressed
