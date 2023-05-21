@@ -39,7 +39,7 @@ while True:
         cv2.putText(img, '({}, {})'.format(center_x, center_y), (x, y-10), font, 2, (0, 255, 0), 2)
 
     # TODO : 사람 명수를 출력하시오
-    print(TODO)
+    print(len(faces))
 
 
     # Display
