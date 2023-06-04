@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from skimage.measure import label
+# from skimage.measure import label
 
 # To use a video file instead of a camera, pass the video file path instead of the camera index
 cap = cv2.VideoCapture(0)
