@@ -23,7 +23,7 @@ while True:
     blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
 
     # connect group
-    labeled_mask = label(blue_mask, connectivity=2)
+    # labeled_mask = label(blue_mask, connectivity=2)
 
     # Apply a bitwise AND operation to the image using the blue mask
     blue_result = cv2.bitwise_and(img, img, mask=blue_mask)
@@ -36,10 +36,16 @@ while True:
     k = cv2.waitKey(30) & 0xff
     if k==27:
         break
-    # Save camera image when 'y' key is pressed
+    # Save camera image when key 'y' is pressed.
     if k==ord('y'):
         cv2.imwrite('./bluesample.png', img)
         break
+    # Save camera image and filtered image when key 'x' is pressed.
+    if k==ord('x'):
+        cv2.imwrite('./bluesample_orig.png', img)
+        cv2.imwrite('./bluesample_filt.png', blue_result)
+        break
+
         
 # Release the VideoCapture object
 cap.release()
