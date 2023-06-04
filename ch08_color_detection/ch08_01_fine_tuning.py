@@ -15,17 +15,14 @@ while True:
     hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     # Define the lower and upper bounds for the blue color in HSV
-    # TODO : Fine-Tune lower/upper blue value
-    lower_blue = np.array([90, 50, 50])
-    upper_blue = np.array([130, 150, 150])
-
+    lower_blue = np.array([70, 50, 50])
+    upper_blue = np.array([130, 255, 255])
 
     # Threshold the image to get only the blue color
     blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
-
     # Apply a bitwise AND operation to the image using the blue mask
     blue_result = cv2.bitwise_and(img, img, mask=blue_mask)
-
+    
     # Display
     cv2.imshow('Original Image', img)
     cv2.imshow('Blue Detection Result', blue_result)
