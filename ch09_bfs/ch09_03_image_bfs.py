@@ -62,3 +62,4 @@ for i in range(img.shape[0]):
 
                 # TODO : Q12) 위의 조건을 모두 통과했으면 queue에 넣어주고, visited[nx][ny]의 값을 idx로 update하여라.
 
+# TODO : Q13) index의 최댓값 print하고 그리고 index의 최댓값이 무엇을 의미하는지 주석으로 작성하시오. (주석 쓰는 법 : # 하고 뒤에 글 치면 됨)
