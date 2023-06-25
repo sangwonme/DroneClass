@@ -1,11 +1,14 @@
 import numpy as np
 from PIL import Image
 from collections import deque
+from matplotlib import pyplot as plt
+import time
 
 TMP_ANS = False
 idx = TMP_ANS
 queue = TMP_ANS
 threshold = 500
+tmp = 0
 
 # Load the image using PIL
 image_pil = Image.open('bluesample_filt.png')  # Replace 'image.jpg' with the path to your image file
@@ -30,6 +33,10 @@ dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 # Q6) idx = 0 으로 초기화 해주기
 idx = 0
+
+
+start_time = time.time()
+
 # 각 픽셀에서 BFS 시작 여부 판단
 for i in range(img.shape[0]):
     for j in range(img.shape[1]):
@@ -73,6 +80,8 @@ for i in range(img.shape[0]):
                 # Q12) 위의 조건을 모두 통과했으면 queue에 넣어주고, visited[nx][ny]의 값을 idx로 update하여라.
                 queue.append((nx, ny))
                 print('Visit : ({}, {})'.format(nx, ny))
+                print(tmp)
+                tmp += 1
                 visited[nx][ny] = idx
 
 # TODO : Q13) index의 최댓값 print하고 그리고 index의 최댓값이 무엇을 의미하는지 주석으로 작성하시오. (주석 쓰는 법 : # 하고 뒤에 글 치면 됨)
@@ -92,18 +101,38 @@ print('idx = ',idx)
 
 
 # TODO : Q14) 각 idx에 해당하는 칸이 몇칸 씩 있는지 print하시오. (hint : np.countnonzero() 이용할 것, for 문을 이용할 것)
-
-
+visited = np.array(visited)
+for i in range(idx+1):
+    print('idx={} : {} cells'.format(i, np.count_nonzero(visited == i)))
 
 # TODO : Q16) 가장 많은 칸을 보유한 idx에서, 해당 idx로 체크된 모든 칸들의 중심 좌표를 구하시오. (좌표 평균 구하면 됨)
-
+indices = np.where(visited == 5)
+c_x = int(indices[0].sum() / len(indices[0]))
+c_y = int(indices[1].sum() / len(indices[1]))
 
 # TODO : Q17) 가장 많은 칸을 보유한 idx에서, 해당 idx로 체크된 모든 칸들을 품을 수 있는 bounding box의 왼쪽 위 꼭지점의 좌표와 bounding box의 너비, 높이를 구하시오.
-
+b_x = indices[0].min()
+b_y = indices[1].min()
+height = indices[0].max() - indices[0].min()
+width = indices[1].max() - indices[1].min()
 
 # TODO : Q18) img를 imshow()를 통해서 보여줄 건데, Q16과 Q17에서 구한 중심좌표와 bouding box를 함께 표시하시오.
 
+plt.imshow(img)
+# Draw the bounding box
+bbox = plt.Rectangle((b_x, b_y), width, height,
+                     fill=False, edgecolor='r', linewidth=2)
+plt.gca().add_patch(bbox)
+# Draw the dot
+plt.plot(c_x, c_y, 'ro', markersize=5)
+# Set axis labels and show the plot
+plt.axis('off')
+end_time = time.time()
+plt.show()
 
 # TODO : Q19) 이 프로그램이 실행되는데 걸리는 시간을 측정하시오.
 # 주의 : 이 문제는 이 부분에 코드를 작성할 뿐만 아니라 윗부분에도 코드를 작성해야 한다.
 # GPT 보다는 구글링을 통해 문제를 풀어보자.
+
+elapsed_time = end_time - start_time
+print("Elapsed time:", elapsed_time, "seconds")
