@@ -8,10 +8,10 @@
 from djitellopy import Tello
 import cv2, math, time
 
-import matplotlib.pyplot as plt
 import numpy as np
 
-y = []
+# 현재 시간
+cur_time = time.time()
 
 tello = Tello()
 tello.connect()
@@ -23,8 +23,12 @@ tello.takeoff()
 while True:
     # In reality you want to display frames in a seperate thread. Otherwise
     #  they will freeze while the drone moves.
+    
     img = frame_read.frame
     cv2.imshow("drone", img)
+    pre_time = cur_time
+    cur_time = time.time()
+    print('프레임당 시간 : ', cur_time - pre_time)
 
     isMove = True
 
@@ -50,7 +54,5 @@ while True:
     else:
         isMove = False
     
-    print(tello.get_current_state()['baro'])
-    y.append(tello.get_current_state()['baro'])
 
 tello.land()
