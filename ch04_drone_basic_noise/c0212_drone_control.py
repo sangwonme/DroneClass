@@ -7,6 +7,9 @@
 
 from djitellopy import Tello
 import cv2, math, time
+import numpy as np
+
+
 
 tello = Tello()
 tello.connect()
@@ -20,6 +23,7 @@ while True:
     #  they will freeze while the drone moves.
     img = frame_read.frame
     cv2.imshow("drone", img)
+
 
     key = cv2.waitKey(1) & 0xff
     if key == 27: # ESC
