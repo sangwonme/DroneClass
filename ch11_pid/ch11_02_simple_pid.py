@@ -4,7 +4,7 @@ from simple_pid import PID
 from matplotlib import pyplot as plt
 
 # PID constants
-Kp = 1.0
+Kp = 0.3
 Ki = 0.0
 Kd = 0.0
 
