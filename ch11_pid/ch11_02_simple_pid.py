@@ -4,7 +4,7 @@ from simple_pid import PID
 from matplotlib import pyplot as plt
 
 # PID constants
-Kp = 0.3
+Kp = 1.8
 Ki = 0.0
 Kd = 0.0
 
@@ -42,6 +42,7 @@ try:
 
         # datas
         datas.append([current_altitude, throttle, target_altitude])
+        print(current_altitude, throttle, target_altitude)
 
 except KeyboardInterrupt:
     # Unpacking the y-values
