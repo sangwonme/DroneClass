@@ -4,9 +4,9 @@ from simple_pid import PID
 from matplotlib import pyplot as plt
 
 # PID constants
-Kp = 1.8
-Ki = 0.0
-Kd = 0.0
+Kp = 1.0
+Ki = 0.2
+Kd = 10.0
 
 # Target altitude
 target_altitude = 100  # in cm
