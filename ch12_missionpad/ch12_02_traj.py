@@ -12,12 +12,14 @@ tello.takeoff()
 
 pad = tello.get_mission_pad_id()
 
+
+
 print('pad number is :', pad)
 
 while pad != 2:
+    tello.move_forward(20)
     pad = tello.get_mission_pad_id()
     print(pad)
-    tello.move_forward(20)
 
 # graceful termination
 tello.disable_mission_pads()
