@@ -1,3 +1,10 @@
+from djitellopy import Tello
+import time
+
+# create and connect
+tello = Tello()
+tello.connect()
+
 morse_code = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
     'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
